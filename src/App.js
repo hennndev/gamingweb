@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import Header from './components/UI/Header'
+import Banner from './components/UI/Banner'
+import Games from './components/Games/Games'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import GameDetail from './components/GameDetail/GameDetail'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = () => {
+	return (
+		<Router>
+			<div className="min-h-screen bg-black">
+				<Header/>
+				<Switch>
+					<Route path="/" exact>
+						<>
+							<Banner/>
+							<Games/>
+						</>
+					</Route>
+					<Route path="/games/:gameId">
+						<GameDetail/>
+					</Route>
+				</Switch>
+			</div>
+		</Router>
+  	)
 }
 
-export default App;
+export default App
